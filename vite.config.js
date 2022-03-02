@@ -3,8 +3,17 @@ import { fileURLToPath, URL } from 'url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
-// https://vitejs.dev/config/
 export default defineConfig({
+  // CORS solution
+  server: {
+    proxy: {
+      '/data': {
+        target: "https://samples.openweathermap.org",
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
   plugins: [vue()],
   resolve: {
     alias: {
