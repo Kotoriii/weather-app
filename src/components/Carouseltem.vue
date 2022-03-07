@@ -1,11 +1,14 @@
 <template>
   <figure class="carousel-item">
-    <time>{{ time }}</time>
+    <time class="time">{{ time }}</time>
+    <img :src="cloudy" />
   </figure>
 </template>
 
 <script>
 import { computed } from 'vue'
+import dayjs from '../day.js'
+import cloudy from '../assets/cloudy.svg'
 
 export default {
   props: {
@@ -15,16 +18,24 @@ export default {
     }
   },
   setup: (props) => {
-    const time = computed(() => props.data.dt)
+    const time = computed(() => dayjs(props.data.dt_txt).format('HH:mm'))
 
-    return { time }
+    return { cloudy, time }
   },
 }
 </script>
 
-<style>
+<style scoped>
 .carousel-item {
   height: 30vh;
   padding: 2rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.time {
+  font-size: 4rem;
+  color: #A8AABD;
 }
 </style>

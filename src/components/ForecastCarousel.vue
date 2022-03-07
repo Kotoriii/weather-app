@@ -3,10 +3,11 @@
     v-if="hasItems"
     :dots="false"
     :nav-buttons="false"
-    infinite
+    :slides-to-show="8"
   >
     <CarouselItem
-      v-for="item in items"
+      v-for="(item, index) in items"
+      :key="index"
       :data="item"
     />
   </VueAgile>
@@ -30,6 +31,8 @@ export default {
   },
   setup: (props) => {
     const { items } = toRefs(props)
+
+    // The carousel can only load when the dynamic slides (data) are ready
     const hasItems = ref(false)
 
     watch(items, (items) => { if (items.length) hasItems.value = true }, { immediate: true })
