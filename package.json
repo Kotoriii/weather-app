@@ -9,7 +9,6 @@
     "preview": "vite preview --port 5050"
   },
   "dependencies": {
-    "@egjs/vue3-flicking": "^4.5.1",
     "axios": "^0.26.0",
     "vue": "^3.2.31",
     "vue-agile": "^2.0.0"

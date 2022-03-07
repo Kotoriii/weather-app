@@ -26,8 +26,8 @@ export default {
       loading.value = true
 
       axios.get(URL_PATH)
-        .then((response) => {
-          forecastList.value = response.list
+        .then(({ data }) => {
+          forecastList.value = data.list
         })
         .catch((error) => {
           console.log(error);
